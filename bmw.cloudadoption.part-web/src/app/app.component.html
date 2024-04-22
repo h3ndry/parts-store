@@ -1,0 +1,75 @@
+<div fxFlex>
+  <mat-toolbar class="app-header">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="bmw-icons">
+      <a routerLink="/"><img src="../../../assets/icons/bmw-logo.png" width="120px" height="30px"></a>
+
+    </div>
+    <span id="app-name">Vehicle Part</span>
+
+    <div class="app-empty"></div>
+
+    <div class="app-translate">
+      <span class="lang-label">Lang: </span>
+      <mat-select #langSelect [value]="translate.currentLang" class="lang-select"
+                  (selectionChange)="setLang(langSelect.value)" [disableOptionCentering]="true">
+        <mat-option
+          *ngFor="let lang of translate.getLangs()"
+          [value]="lang">
+          {{ lang | uppercase }}
+        </mat-option>
+      </mat-select>
+    </div>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="app-container">
+
+    <mat-sidenav #sidenav mode="side" opened class="app-sidenav"
+                 [fixedInViewport]="false" [fixedTopGap]="0"
+                 [fixedBottomGap]="0">
+
+      <mat-nav-list fxLayout="column" >
+
+        <a mat-list-item routerLink="/home">
+          <div fxLayout="row center">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+          </div>
+        </a>
+
+        <a mat-list-item routerLink="/part">
+          <div fxLayout="row center">
+            <mat-icon>list</mat-icon>
+            <span>Part List</span>
+          </div>
+        </a>
+
+        <a mat-list-item routerLink="/part/create">
+          <div fxLayout="row center">
+            <mat-icon>add_box</mat-icon>
+            <span>Create Part</span>
+          </div>
+        </a>
+
+      </mat-nav-list>
+
+    </mat-sidenav>
+   
+    <app-backend></app-backend>
+    
+    <div class="app-content">
+      <mat-progress-bar *ngIf="isLoading | async" mode='indeterminate'></mat-progress-bar>
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-container>
+
+  <mat-toolbar class="app-footer">
+      <span class="span">BMW Group - Tech Talent Days</span>
+  </mat-toolbar>
+
+</div>

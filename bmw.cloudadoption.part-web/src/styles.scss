@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use '@angular/material' as mat;
+@include mat.core();
+
+@import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
+@import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-snack-bar-container {
+  &.info-snackbar {
+    //--mdc-snackbar-container-color: #00396f;
+    --mdc-snackbar-container-color: #cbdfff;
+    --mat-mdc-snack-bar-button-color: #353a41;
+    --mdc-snackbar-supporting-text-color: #353a41;
+  }
+  &.success-snackbar {
+    //--mdc-snackbar-container-color: #084114;
+    --mdc-snackbar-container-color: #9ff7b7;
+    --mat-mdc-snack-bar-button-color: #353a41;
+    --mdc-snackbar-supporting-text-color: #353a41;
+  }
+  &.error-snackbar {
+    --mdc-snackbar-container-color: #ffd4d4;
+    --mat-mdc-snack-bar-button-color: #353a41;
+    --mdc-snackbar-supporting-text-color: #353a41;
+  }
+}
+
+$my-primary: mat.define-palette(mat.$teal-palette, 500);
+$my-accent: mat.define-palette(mat.$blue-gray-palette, A200, A100, A400);
+$my-warn: mat.define-palette(mat.$deep-orange-palette);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+@include mat.all-component-themes($my-theme);

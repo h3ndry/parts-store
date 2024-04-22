@@ -1,0 +1,31 @@
+<div fxFill>
+
+  <mat-card>
+    <div fxLayout="row">
+      <mat-card-header fxFlex="50%">
+        <mat-card-title>{{'PARTS' | translate}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions fxFlex="50%" fxLayout="row-reverse">
+        <button mat-raised-button color="accent" class="action" (click)="onRefresh()">{{"REFRESH" | translate}}</button>
+        <button mat-raised-button color="primary" class="action" (click)="onCreate()">{{"CREATE" | translate}}</button>
+      </mat-card-actions>
+    </div>
+
+    <mat-divider></mat-divider>
+    <mat-card-content class="content">
+      <ag-grid-angular
+        style="width: 100%; height: 100%"
+        class="ag-theme-alpine"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [domLayout]="'autoHeight'"
+        [rowData]="parts$ | async"
+        [rowSelection]="'single'"
+        [animateRows]="true"
+        (selectionChanged)="onSelectionChanged($event)"
+      ></ag-grid-angular>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

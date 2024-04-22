@@ -1,0 +1,20 @@
+<div class="app-tech-card">
+  <mat-card>
+    <div fxLayout="row">
+      <mat-card-header>
+        <mat-card-title>{{ "BACKEND_SELECT" | translate }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions fxLayout="row-reverse">
+        <mat-form-field class="clear-hint">
+          <mat-label>Backend</mat-label>
+          <mat-select [(value)]="selected" (valueChange)="valueChanged()">
+            <mat-option value="localhost">localhost</mat-option>
+            <mat-option value="csharp">csharp</mat-option>
+            <mat-option value="java">java</mat-option>
+            <mat-option value="python">python</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>
